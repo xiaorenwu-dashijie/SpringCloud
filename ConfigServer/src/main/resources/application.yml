@@ -1,0 +1,35 @@
+# 指定服务注册中心的地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+# 可以将刷新设置密码取消,防止不能够刷新      
+management:
+  security:
+    enabled: 'false'
+# 配置tomcat端口
+server:
+  port: '8888'
+spring:
+  # 设置服务名
+  application:
+    name: config-server
+  cloud:
+    config:
+      # 配置仓库的分支
+      label: master
+      server:
+        git:
+          # 配置仓库路径
+          searchPaths: respo
+          # 配置git仓库地址
+          uri: https://github.com/xiaorenwu-dashijie/SpringcloudConfig-master
+          # 访问git仓库的用户名
+          # username: xiaorenwu-dashijie
+          # 访问git仓库的用户密码
+          # password: qiao7601783
+  rabbitmq:
+    host: 10.170.1.180
+    port: 5672
+    username: admin
+    password: admin

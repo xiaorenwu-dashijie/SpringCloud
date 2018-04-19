@@ -1,0 +1,21 @@
+# 指定服务注册中心的地址
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+# 配置tomcat端口
+server:
+  port: 8766
+# 设置服务名
+spring:
+  application:
+    name: EurekaZuul
+# 以/api-ribbon/ 开头的请求都转发给EurekaClientRibbon服务；以/api-feign/开头的请求都转发给EurekaClientFeign服务；
+zuul:
+  routes:
+    api-a:
+      path: /api-ribbon/**
+      serviceId: EurekaClientRibbon
+    api-b:
+      path: /api-feign/**
+      serviceId: EurekaClientFeign

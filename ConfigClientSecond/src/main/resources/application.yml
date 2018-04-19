@@ -1,0 +1,38 @@
+# 指定服务注册中心地址,通过Eureka负载均衡,读取配置文件
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+# 可以将刷新设置密码取消,防止不能够刷新
+management:
+  security:
+    enabled: 'false'
+# 配置tomcat端口
+server:
+  port: '8882'
+spring:
+  application:
+    # 设置服务名
+    name: config-client
+  cloud:
+    bus:
+      trace:
+        enabled: 'true'
+    config:
+      discovery:
+        # 说明是从配置中心读取文件
+        enabled: 'true'
+        # 配置中心的servieId，即服务名
+        serviceId: config-server
+      # 指明远程仓库的分支
+      label: master
+      # dev开发环境配置文件
+      profile: dev
+      # 指明配置服务中心的网址。
+      uri: http://localhost:8888/
+  # RabbitMQ连接
+  rabbitmq:
+    host: 10.170.1.180
+    port: 5672
+    username: admin
+    password: admin
