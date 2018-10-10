@@ -15,6 +15,7 @@ public class ClientService {
 
 	@HystrixCommand(fallbackMethod = "hiError") // 该注解对该方法创建了熔断器的功能，并指定了fallbackMethod熔断方法，熔断方法直接返回了一个字符串
 	public String getName(String name) {
+		//restRemplate开启了负载均衡的功能
 		String forObject = restTemplate.getForObject("http://EurekaServer/hi?name=" + name, String.class);
 		if (!StringUtils.isEmpty(forObject)) {
 			System.err.println("调用服务端成功");
