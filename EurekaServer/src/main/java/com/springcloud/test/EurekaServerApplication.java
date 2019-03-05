@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-@EnableEurekaClient
+@EnableEurekaClient // 表明自己是一个eurekaclient
 public class EurekaServerApplication {
-	//http://localhost:8762/hi?name=forezp
+	// http://localhost:8762/hi?name=forezp
 	public static void main(String[] args) {
 		SpringApplication.run(EurekaServerApplication.class, args);
 		System.err.println("服务端1注册完成");
